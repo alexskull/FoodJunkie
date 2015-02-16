@@ -4,6 +4,14 @@
 /* @var $form CActiveForm */
 ?>
 
+<div class="row-bot">
+        	<div class="row-bot-bg">
+            	<div class="main">
+                	<h2><a> Registro de <span>Usuarios</span></a> </h2>
+                </div>
+            </div>
+</div>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -87,7 +95,16 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model1,'Foto'); ?>
-		<?php echo $form->textField($model1,'Foto'); ?>
+		<?php $this->widget('CMultiFileUpload',array(
+			'model' => $model1,
+		    'name'=>'Foto',
+		    'accept'=>'jpg|png',
+		    'max'=>3,
+		    'remove'=>Yii::t('ui','Remove'),
+		    //'denied'=>'', message that is displayed when a file type is not allowed
+		    //'duplicate'=>'', message that is displayed when a file appears twice
+		    'htmlOptions'=>array('size'=>25),)); 
+		?>
 		<?php echo $form->error($model1,'Foto'); ?>
 	</div>
 

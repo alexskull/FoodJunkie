@@ -31,6 +31,16 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
 	}
+	
+	
+	public function actionRegister()
+	{
+
+
+		$this->render('register');
+	}
+	
+	
 
 	/**
 	 * This is the action to handle external exceptions.
@@ -71,6 +81,7 @@ class SiteController extends Controller
 		}
 		$this->render('contact',array('model'=>$model));
 	}
+
 
 	/**
 	 * Displays the login page

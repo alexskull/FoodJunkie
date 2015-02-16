@@ -141,6 +141,25 @@ class ClienteController extends Controller
 		));
 	}
 
+		/**
+		* Uploads files submitted via CMultiFileUpload widget
+		* Deletes all old files before uploading new files
+	*/
+	public function actionUpload()
+	{
+		if(isset($_FILES['files']))
+		{
+		// delete old files
+		foreach($this->findFiles() as $filename)
+		unlink(Yii::app()->params['uploadDir'].$filename);
+		//upload new files
+		foreach($_FILES['files']['name'] as $key=>$filename)
+		move_uploaded_file($_FILES['files']['tmp_name'][$key],Yii::app()->params['uploadDir'].$filename);
+		}
+		$this->redirect(array('site/widget','view'=>'multifileupload'));
+	}
+	
+
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
