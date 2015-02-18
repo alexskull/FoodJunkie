@@ -3,7 +3,19 @@
 /* @var $data Local */
 ?>
 
-<div class="view">
+<div class="row-bot">
+        	<div class="row-bot-bg">
+            	<div class="main">
+                	<h2><a> Registro de <span>Usuarios</span></a> </h2>
+                </div>
+            </div>
+</div>
+
+<div id="content">
+        <div class="main">
+        	      <div class="aligncenter img-indent-bot">
+ <div class="aligncenter">   
+
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('idLocal')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->idLocal), array('view', 'id'=>$data->idLocal)); ?>

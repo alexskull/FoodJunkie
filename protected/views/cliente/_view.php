@@ -2,8 +2,24 @@
 /* @var $this ClienteController */
 /* @var $data Cliente */
 ?>
+<div class="row-bot">
+        	<div class="row-bot-bg">
+            	<div class="main">
+                	<h2><a> Registro de <span>Usuarios</span></a> </h2>
+                </div>
+            </div>
+</div>
 
-<div class="view">
+        	<?php if(isset($this->breadcrumbs)):?>
+				<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+				)); ?><!-- breadcrumbs -->
+			<?php endif?>
+
+<div id="content">
+        <div class="main">
+        	      <div class="aligncenter img-indent-bot">
+ <div class="aligncenter">   
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('idCliente')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->idCliente), array('view', 'id'=>$data->idCliente)); ?>

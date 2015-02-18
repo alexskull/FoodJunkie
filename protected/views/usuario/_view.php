@@ -40,6 +40,6 @@
 	<?php echo CHtml::encode($data->Roles_idRoles); ?>
 	<br />
 
-	 ?>
+	 
 
 </div>

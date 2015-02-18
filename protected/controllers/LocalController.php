@@ -31,13 +31,19 @@ class LocalController extends Controller
 				'actions'=>array('index','view','create'),
 				'users'=>array('*'),
 			),
+			array('allow',  // allow all users to perform 'perfil actions
+				'actions'=>array('perfil'),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getState("idRol")==3'
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getState("idRol")==1'
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -53,6 +59,13 @@ class LocalController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+	}
+	
+	public function actionPerfil()
+	{
+		$this->render('perfil',array(
+			'model'=>$this->loadPerfil(),
 		));
 	}
 
@@ -180,6 +193,19 @@ class LocalController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	
+	
+	public function loadPerfil()
+	{
+
+		$modelu=Usuario::model()->findByAttributes(array('Usuario'=>Yii::app()->user->id));
+		$model=Local::model()->findByAttributes(array('Usuario_User'=>$modelu->id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	 
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
