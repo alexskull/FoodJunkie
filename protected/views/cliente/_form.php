@@ -38,7 +38,21 @@
 		<?php echo $form->passwordField($model2,'Password',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model2,'Password'); ?>
 	</div>
+		<?php 
+		 $this->widget('application.extensions.timepicker.timepicker', array(
+            'id'=>'Hora',
+            'model'=>$model2,
+            'name'=>'Usuario',
+            'select'=> 'time',
+            'options' => array(
+            'showOn'=>'focus',
+                'timeFormat'=>'hh:mm',
+                //'hourMin'=> (int) $hourMin,
+                //'hourMax'=> (int) $hourMax,
 
+            ),
+        ));
+		?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model1,'Nombre'); ?>

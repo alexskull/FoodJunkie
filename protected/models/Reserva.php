@@ -34,7 +34,7 @@ class Reserva extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Hora, Cant_Personas, Fecha, Activa, Usuario_User, Local_idLocal', 'required'),
+			array('Hora, Cant_Personas, Fecha, Local_idLocal', 'required'),
 			array('Cant_Personas, Usuario_User, Local_idLocal', 'numerical', 'integerOnly'=>true),
 			array('Activa', 'length', 'max'=>1),
 			// The following rule is used by search().
@@ -64,9 +64,9 @@ class Reserva extends CActiveRecord
 		return array(
 			'idReserva' => 'Id Reserva',
 			'Hora' => 'Hora',
-			'Cant_Personas' => 'Cant Personas',
+			'Cant_Personas' => 'Personas',
 			'Fecha' => 'Fecha',
-			'Activa' => 'Activa',
+			'Activa' => 'Estado',
 			'Usuario_User' => 'Usuario User',
 			'Local_idLocal' => 'Local Id Local',
 		);

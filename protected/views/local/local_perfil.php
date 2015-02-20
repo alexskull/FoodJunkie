@@ -21,7 +21,13 @@
                          <li>0273-2030508</li>
                          <li>Raiting 4.2</li>
                          <ul>TE ESPERAMOS</ul>
-                         <a class="button-1" href="#">Hacer Reservacion</a>
+			             <?php $this->widget('zii.widgets.jui.CJuiButton', array(
+						    'buttonType'=>'link',
+						    'name'=>'boton2',
+						    'caption'=>'Reserva',
+						    'htmlOptions'=>array('class'=>'boton2'),
+						    'url'=>array('/Reserva/Create'),
+						 )); ?> 
                     </div>
 
 

@@ -37,7 +37,7 @@ class ReviewController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'expression'=>'Yii::app()->user->getState("idRol")==1'
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -124,7 +124,7 @@ class ReviewController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('Yii::app()->user->getState("idRol")==1'));
 	}
 
 	/**

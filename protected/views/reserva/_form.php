@@ -21,7 +21,22 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Hora'); ?>
-		<?php echo $form->textField($model,'Hora'); ?>
+		<?php 
+		   $this->widget('application.extensions.timepicker.timepicker', array(
+            'id'=>'Hora',
+            'model'=>$model,
+            'name'=>'Hora',
+            'select'=> 'time',
+            'options' => array(
+            'showOn'=>'focus',
+                'timeFormat'=>'hh:mm',
+                //'hourMin'=> (int) $hourMin,
+                //'hourMax'=> (int) $hourMax,
+                'hourGrid'=>2,
+                'minuteGrid'=>10,
+            ),
+        ));
+		?>
 		<?php echo $form->error($model,'Hora'); ?>
 	</div>
 
@@ -33,25 +48,36 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Fecha'); ?>
-		<?php echo $form->textField($model,'Fecha'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		    'model' => $model,
+		    'attribute' => 'Fecha',
+		    'themeUrl' => Yii::app()->baseUrl . '/css/jui',
+		    'theme' => 'softark',
+		    'cssFile' => 'jquery-ui-1.9.2.custom.css',
+		    'options' => array(
+		        'showOn' => 'both',             // also opens with a button
+		        'dateFormat' => 'yy-mm-dd',     // format of "2012-12-25"
+		        'showOtherMonths' => true,      // show dates in other months
+		        'selectOtherMonths' => true,    // can seelect dates in other months
+		        'changeYear' => true,           // can change year
+		        'changeMonth' => true,          // can change month
+		        'yearRange' => '1950:2099',     // range of year
+		        'minDate' => '1950-01-01',      // minimum date
+		        'maxDate' => '2099-12-31',      // maximum date
+		        'showButtonPanel' => true,      // show button panel
+		    ),
+		    'htmlOptions' => array(
+		        'size' => '10',
+		        'maxlength' => '10',
+		    ),
+		));
+		?>
 		<?php echo $form->error($model,'Fecha'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Activa'); ?>
-		<?php echo $form->textField($model,'Activa',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'Activa'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Usuario_User'); ?>
-		<?php echo $form->textField($model,'Usuario_User'); ?>
-		<?php echo $form->error($model,'Usuario_User'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'Local_idLocal'); ?>
-		<?php echo $form->textField($model,'Local_idLocal'); ?>
+		<?php echo $form->dropDownList($model,'Local_idLocal',CHtml::listData(Local::model()->findAll(),'idLocal','Nombre'),array('empty'=>'Seleccione un tipo')); ?>
 		<?php echo $form->error($model,'Local_idLocal'); ?>
 	</div>
 
