@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Create Reserva', 'url'=>array('create')),
 	array('label'=>'Update Reserva', 'url'=>array('update', 'id'=>$model->idReserva)),
 	array('label'=>'Delete Reserva', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idReserva),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Reserva', 'url'=>array('admin')),
+	array('label'=>'Manage Reserva', 'url'=>array('admin'), 'visible'=>Yii::app()->user->getState('idRol')==1),
 );
 ?>
 

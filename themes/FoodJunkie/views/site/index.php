@@ -32,8 +32,13 @@ $this->pageTitle=Yii::app()->name;
    <div id="content"><div class="ic"></div>
         <div class="main">
             <div class="wrapper img-indent-bot">
+            	
+                	
                 <article class="col-1">
-                	<a href="searchResults.html"><img class="img-border" src='themes/FoodJunkie/images//fancy.png' alt=""></a>
+                	<?php CHtml::link(
+	        "<img src='".Yii::app()->baseUrl."themes/FoodJunkie/images//fancy.png"."' />",
+	        Yii::app()->createAbsoluteUrl("local/view"/*,array("id"=>$this->order_id)*/)
+	    ); ?>
                 </article>
                 <article class="col-2">
                 	<a href="searchResults.html"><img class="img-border"  src="themes/FoodJunkie/images/Fastfood.png" alt=""></a>

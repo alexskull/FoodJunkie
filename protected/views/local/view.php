@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Create Local', 'url'=>array('create')),
 	array('label'=>'Update Local', 'url'=>array('update', 'id'=>$model->idLocal)),
 	array('label'=>'Delete Local', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idLocal),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Local', 'url'=>array('admin')),
+	array('label'=>'Manage Local', 'url'=>array('admin'), 'visible'=>Yii::app()->user->getState('idRol')==1),
 );
 ?>
 

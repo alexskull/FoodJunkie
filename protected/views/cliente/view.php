@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Create Cliente', 'url'=>array('create')),
 	array('label'=>'Update Cliente', 'url'=>array('update', 'id'=>$model->idCliente)),
 	array('label'=>'Delete Cliente', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idCliente),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Cliente', 'url'=>array('admin')),
+	array('label'=>'Manage Cliente', 'url'=>array('admin'), 'visible'=>Yii::app()->user->getState('idRol')==1),
 );
 ?>
 

@@ -5,8 +5,8 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Usuario_Username')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->Usuario_Username), array('view', 'id'=>$data->Usuario_Username)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('idReview')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->idReview), array('view', 'id'=>$data->idReview)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Comentario')); ?>:</b>
@@ -25,8 +25,12 @@
 	<?php echo CHtml::encode($data->RatingCalidad); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Local_Usuario_Username')); ?>:</b>
-	<?php echo CHtml::encode($data->Local_Usuario_Username); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Usuario_User')); ?>:</b>
+	<?php echo CHtml::encode($data->Usuario_User); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Local_idLocal')); ?>:</b>
+	<?php echo CHtml::encode($data->Local_idLocal); ?>
 	<br />
 
 

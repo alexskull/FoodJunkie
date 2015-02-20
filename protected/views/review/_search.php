@@ -12,8 +12,13 @@
 )); ?>
 
 	<div class="row">
+		<?php echo $form->label($model,'idReview'); ?>
+		<?php echo $form->textField($model,'idReview'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'Comentario'); ?>
-		<?php echo $form->textField($model,'Comentario',array('size'=>60,'maxlength'=>180)); ?>
+		<?php echo $form->textField($model,'Comentario',array('size'=>60,'maxlength'=>240)); ?>
 	</div>
 
 	<div class="row">
@@ -32,13 +37,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Local_Usuario_Username'); ?>
-		<?php echo $form->textField($model,'Local_Usuario_Username',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->label($model,'Usuario_User'); ?>
+		<?php echo $form->textField($model,'Usuario_User'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Usuario_Username'); ?>
-		<?php echo $form->textField($model,'Usuario_Username',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->label($model,'Local_idLocal'); ?>
+		<?php echo $form->textField($model,'Local_idLocal'); ?>
 	</div>
 
 	<div class="row buttons">

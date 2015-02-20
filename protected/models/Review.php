@@ -34,7 +34,7 @@ class Review extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RatingPrecio, RatingAtencion, RatingCalidad, Usuario_User, Local_idLocal', 'required'),
+			array('RatingPrecio, RatingAtencion, RatingCalidad, Local_idLocal', 'required'),
 			array('Usuario_User, Local_idLocal', 'numerical', 'integerOnly'=>true),
 			array('RatingPrecio, RatingAtencion, RatingCalidad', 'numerical'),
 			array('Comentario', 'length', 'max'=>240),

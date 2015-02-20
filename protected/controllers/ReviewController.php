@@ -37,8 +37,7 @@ class ReviewController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
-				'expression'=>'Yii::app()->user->getState("idRol")==1'
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -64,20 +63,30 @@ class ReviewController extends Controller
 	public function actionCreate()
 	{
 		$model=new Review;
-
+		$modelu=Usuario::model()->findByAttributes(array('Usuario'=>Yii::app()->user->id));;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+	
 		if(isset($_POST['Review']))
 		{
 			$model->attributes=$_POST['Review'];
+			$model->Usuario_User= $modelu->id;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Usuario_Username));
+				$this->redirect(array('view','id'=>$model->idReview));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionStarRating() {
+   		 $ratingValue=0;
+ 
+    	if (isset($_POST['RatingPrecio'])) {
+	        $ratingValue=$_POST['RatingPrecio']; //according the widget name, in this case is "rating"
+	    }
+	   
 	}
 
 	/**
@@ -96,7 +105,7 @@ class ReviewController extends Controller
 		{
 			$model->attributes=$_POST['Review'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Usuario_Username));
+				$this->redirect(array('view','id'=>$model->idReview));
 		}
 
 		$this->render('update',array(

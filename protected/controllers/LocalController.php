@@ -28,7 +28,7 @@ class LocalController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create'),
+				'actions'=>array('index','view','create','local_perfil'),
 				'users'=>array('*'),
 			),
 			array('allow',  // allow all users to perform 'perfil actions
@@ -62,11 +62,47 @@ class LocalController extends Controller
 		));
 	}
 	
+	/**
+	 * Displays an imagen form different sources
+	
+	 */
+	public function image_tag(){
+        return CHtml::image(Yii::app()->baseUrl."/images/Sub.png");
+	}
+	
+	public function image_with_link(){
+	    $html= CHtml::link(
+	        "<img src='".Yii::app()->baseUrl."/images/reports.png"."' />",
+	        Yii::app()->createAbsoluteUrl("payment/invoice",array("id"=>$this->order_id))
+	    );
+	    return $html;
+	}
+	
+	public function showphoto_from_database(){
+	    if($this->bitmap!=''){
+	        return CHtml::image("data:image/png;base64,".$photomodel->bitmap,
+	            'No Image',
+	            array('width'=>150,'height'=>100)
+	        );
+	    }else{
+	        $url=Yii::app()->baseUrl."/img/noimage.jpg";               
+	        return CHtml::image($url,'No Image');
+	    }
+	}
+	
+	
 	public function actionPerfil()
 	{
 		$this->render('perfil',array(
 			'model'=>$this->loadPerfil(),
 		));
+	}
+	
+		public function actionLocal_perfil()
+	{
+		$this->render('local_perfil'/*,array(
+			'model'=>$this->loadPerfil(),
+		)*/);
 	}
 
 	/**

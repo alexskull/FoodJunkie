@@ -21,38 +21,64 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Comentario'); ?>
-		<?php echo $form->textField($model,'Comentario',array('size'=>60,'maxlength'=>180)); ?>
+		<?php echo $form->textField($model,'Comentario',array('size'=>60,'maxlength'=>240)); ?>
 		<?php echo $form->error($model,'Comentario'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'RatingPrecio'); ?>
-		<?php echo $form->textField($model,'RatingPrecio'); ?>
+		<?php echo $form->labelEx($model,'RatingPrecio'); ?>/*
+		<!--<?php $this->widget('CStarRating',array(
+		    'model'=>$model,
+		    'attribute'=>'RatingPrecio',
+		    'value'=>$model->RatingPrecio,
+		    'readOnly'=>false,
+		    'name'=>'RatingPrecio',
+		    'ratingStepSize'=>1,
+		    'value'=>'3',
+		    'minRating'=>1,
+			'maxRating'=>5,
+			'starCount'=>5, //number of stars));*/
+			
+		));?>-->
+		<?php echo $form->dropDownList($model,'RatingPrecio',array(''=>'','1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5')); ?>
 		<?php echo $form->error($model,'RatingPrecio'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'RatingAtencion'); ?>
-		<?php echo $form->textField($model,'RatingAtencion'); ?>
+		<!--<?php $this->widget('CStarRating',array(
+		    'model'=>$model,
+		    'attribute'=>'RatingAtencion',
+		    'name'=>'RatingAtencion',
+		    'value'=>'3',
+		    'minRating'=>1,
+			'maxRating'=>5,
+			'starCount'=>5, //number of stars));
+		));?>-->
+		<?php echo $form->dropDownList($model,'RatingAtencion',array(''=>'','1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5')); ?>
 		<?php echo $form->error($model,'RatingAtencion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'RatingCalidad'); ?>
-		<?php echo $form->textField($model,'RatingCalidad'); ?>
+	<!--	<?php $this->widget('CStarRating',array(
+		    'model'=>$model,
+		    'attribute'=>'RatingCalidad',
+		    'name'=>'RatingCalidad',
+		    'value'=>'3',
+		    'minRating'=>1,
+			'maxRating'=>5,
+			'starCount'=>5, //number of stars));
+		));?>-->
+		<?php echo $form->dropDownList($model,'RatingCalidad',array(''=>'','1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5')); ?>
 		<?php echo $form->error($model,'RatingCalidad'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Local_Usuario_Username'); ?>
-		<?php echo $form->textField($model,'Local_Usuario_Username',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'Local_Usuario_Username'); ?>
-	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Usuario_Username'); ?>
-		<?php echo $form->textField($model,'Usuario_Username',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'Usuario_Username'); ?>
+		<?php echo $form->labelEx($model,'Local_idLocal'); ?>
+		<?php echo $form->dropDownList($model,'Local_idLocal',CHtml::listData(Local::model()->findAll(),'idLocal','Nombre'),array('empty'=>'Seleccione un tipo')); ?>
+		<?php echo $form->error($model,'Local_idLocal'); ?>
 	</div>
 
 	<div class="row buttons">

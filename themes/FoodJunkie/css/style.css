@@ -519,3 +519,28 @@ border-radius: 15px 15px 15px 15px;
 border-radius: 15px 15px 15px 15px;
 	
 	}
+	
+#boton3{
+	font-size:22px;
+	color:#FFF;
+	width:250px;
+	height:35px;
+	border-style:solid;
+	text-align:center;
+	vertical-align:middle;
+	background-image:url(../images/green.jpg);
+	margin-left:60px;
+	margin-top:10px;
+	margin-bottom:150px;
+	margin-right:260px;
+	
+	outline-color:#FFF;
+	border-radius:15px 15px 15px 15px;
+	/*para Firefox*/
+-moz-border-radius: 15px 15px 15px 15px;
+/*para Safari y Chrome*/
+-webkit-border-radius: 15px 15px 15px 15px;
+/* para Opera */
+border-radius: 15px 15px 15px 15px;
+	
+	}
