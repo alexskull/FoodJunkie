@@ -15,7 +15,7 @@ class ReviewController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+
 		);
 	}
 
@@ -35,9 +35,14 @@ class ReviewController extends Controller
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
+			array('allow', // allow only the owner to perform 'view' 'update' 'delete' actions
+                'actions' => array('update', 'delete'),
+                'expression' => array('ReviewController','allowOnlyOwner')
+            ),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'expression'=>'Yii::app()->user->getState("idRol")==1'
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getState("idRol")==1',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -123,9 +128,15 @@ class ReviewController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('Yii::app()->user->getState("idRol")==1'));
+
+		if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) );
+        
+        else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
 	}
+
+
 
 	/**
 	 * Lists all models.
@@ -180,4 +191,20 @@ class ReviewController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	/**
+     * Allow only the owner to do the action
+     * @return boolean whether or not the user is the owner
+     */
+	public function allowOnlyOwner(){
+        if(Yii::app()->user->getState("idRol")==1){
+            return true;
+        }
+        else{
+        	$modelu=Usuario::model()->findByAttributes(array('Usuario'=>Yii::app()->user->id));
+            $model=Review::model()->findByAttributes(array('Usuario_User'=>$modelu->id));
+            return $model->idReview === Yii::app()->user->id;
+        }
+    }
+	
 }

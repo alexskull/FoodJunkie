@@ -32,7 +32,7 @@ class ReservaController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','delete'),
+				'actions'=>array('create','update','delete','cancelacion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -106,6 +106,22 @@ class ReservaController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+		public function actionCancelacion($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		$model->Activa= 'N';
+
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->idReserva));
+
+		$this->render('cancelacion',array(
+			'model'=>$model,
+		));
+	}
 
 	/**
 	 * Deletes a particular model.
@@ -117,7 +133,8 @@ class ReservaController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**

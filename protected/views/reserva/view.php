@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Reserva', 'url'=>array('index')),
+	array('label'=>'Cancelar Reserva', 'url'=>array('cancelacion', 'id'=>$model->idReserva)),
 	array('label'=>'Create Reserva', 'url'=>array('create')),
 	array('label'=>'Update Reserva', 'url'=>array('update', 'id'=>$model->idReserva)),
 	array('label'=>'Delete Reserva', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idReserva),'confirm'=>'Are you sure you want to delete this item?')),
